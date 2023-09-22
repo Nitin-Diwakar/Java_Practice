@@ -24,27 +24,29 @@ class BankAccount{
 
 //Derived class: Checking Account
 class CheckingAccount extends BankAccount{
-    int fee;
-
-    CheckingAccount(long accountNumber, double totalBalance) {
+    private int fee;
+    CheckingAccount(long accountNumber, double totalBalance, int fee) {
         super(accountNumber, totalBalance);
+        this.fee = fee;
     }
 
     public void deductFee() {
-
+        super.withdraw(fee);
     }
 }
 
 // Derived Class: Saving Account
 class SavingAccount extends BankAccount{
-    float interestRate;
+    private float interestRate;
 
-    SavingAccount(long accountNumber, double totalBalance) {
+    SavingAccount(long accountNumber, double totalBalance, float interestRate) {
         super(accountNumber, totalBalance);
+        this.interestRate = interestRate;
     }
 
     public void addInterest(){
-
+        double interest = getBalance() * (interestRate / 100);
+        deposit(interest);
     }
 }
 
@@ -52,19 +54,16 @@ class SavingAccount extends BankAccount{
 public class Que1 {
 
     public static void main(String[] args) {
-        BankAccount SBI12345 = new BankAccount(12345,20000);
+        SavingAccount savingAccount = new SavingAccount(12345, 30000, 8);
 
-        //getter method call
-        System.out.println("Current Balance: " + "$" + SBI12345.getBalance());
+        System.out.println("Saving Account Balance: $" + savingAccount.getBalance());
 
-        // deposit method call
-        SBI12345.deposit(10000);
-        System.out.println("Deposited $10000.0");
+        savingAccount.deposit(5000);
 
-        //getter method call
-        System.out.println("Current Balance: " + "$" + SBI12345.getBalance());
+        System.out.println("Saving Account Balance after deposit: $" + savingAccount.getBalance());
 
-        SBI12345.withdraw(20000);
-        System.out.println("Total amount after withdraw: "+ "$" + SBI12345.getBalance());
+        savingAccount.addInterest();
+
+        System.out.println("Saving Account Balance after interest addition: $" + savingAccount.getBalance());
     }
 }
