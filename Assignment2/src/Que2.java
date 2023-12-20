@@ -32,9 +32,9 @@ class ElectricityBill {
         if (unitsConsumed <= 100) {
             billAmount = unitsConsumed * 1.20;
         } else if (unitsConsumed <= 300) {
-            billAmount = 100 * 1.20 + (unitsConsumed - 100) * 2.00;
-        } else if (unitsConsumed <= 600) {
-            billAmount = 100 * 1.20 + 200 * 2.00 + (unitsConsumed - 300) * 3.00;
+            billAm else if (unitsConsumed <= 600) {
+            billAmount = 100 * 1.20 + 200 * 2.00 + (unitsConsumed - 300) * 3.00;ount = 100 * 1.20 + (unitsConsumed - 100) * 2.00;
+        }
         } else {
             billAmount = 100 * 1.20 + 200 * 2.00 + 300 * 3.00 + (unitsConsumed - 600) * 5.00;
         }
